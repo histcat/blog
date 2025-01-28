@@ -1,0 +1,49 @@
+---
+import { Icon } from 'astro-icon/components'
+const {page} = Astro.props;
+// 手机主页换页界面
+---
+<div class="pagination index-page">
+
+    {
+        (page.url.prev != undefined) ?
+            <a class="pagination-action" href={page.url.prev} style="opacity: 1">
+                <i class="material-icons pagination-action-icon">
+                    <Icon name="ic:outline-keyboard-arrow-left" />
+                </i>
+            </a>
+        :
+            <a class="pagination-action" style="opacity: 0">
+               <i class="material-icons pagination-action-icon">
+                    <Icon name="ic:outline-keyboard-arrow-left" />
+                </i>
+            </a> 
+    }
+
+    <div class="pagination-indicator">
+        <span style="text-align: center">
+            <span>{page.currentPage}/{page.currentPage}</span>
+        </span>
+    </div>
+
+    {
+        (page.url.next != undefined) ?
+            <a class="pagination-action" href={page.url.next} style="opacity: 1">
+                <i class="material-icons pagination-action-icon">
+                    <Icon name="ic:outline-keyboard-arrow-right" />
+                </i>
+            </a>
+        :
+            <a class="pagination-action" style="opacity: 0">
+               <i class="material-icons pagination-action-icon">
+                    <Icon name="ic:outline-keyboard-arrow-right" />
+                </i>
+            </a> 
+    }
+    
+</div>
+
+<style>
+    [data-icon] {
+    font-size: 24px !important;
+}

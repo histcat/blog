@@ -1,0 +1,29 @@
+---
+const {page} = Astro.props;
+
+---
+
+<div class="post-list-container post-list-container-no-background">
+    {page.data.map((post : any) => (
+        <a href="" class="a-block">
+            <div class="post-item-wrapper">
+                <div class="post-item post-item-no-divider">
+                    <div class="post-item-info-wrapper">
+                        <div class="post-item-title">
+                            {post.data.title}
+                        </div>
+                        <div class="post-item-summary">
+                            {post.data.description}
+                        </div>
+                        <div class="post-item-meta">
+                            {post.data.pubDate}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+    ))
+    }
+
+</div>

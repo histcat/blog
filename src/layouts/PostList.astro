@@ -1,0 +1,63 @@
+---
+import { BASIC_INFO } from "../consts";
+import BaseLayout from "./BaseLayout.astro";
+import SingleColumn from "../components/single_column.astro";
+import SideNav from "../components/side_nav.astro";
+import BodyIncludes from "../components/body_includes.astro";
+import ExtraNav from "../components/extra_nav.astro";
+import SingleColumnFooter from "../components/single_column_footer.astro";
+import Pagination from "../components/pagination.astro";
+const { page, title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+    <body>
+        <div id="top"></div>
+        <div id="app">
+            <SingleColumn />
+            <SideNav />
+            <ExtraNav page={page} />
+            <div ref="streamContainer" class="stream-container">
+                <div
+                    class="post-list-container post-list-container-no-background"
+                >
+                    {
+                        page.data.map((post: any) => (
+                            <a
+                                href={BASIC_INFO.SITE_URL + "post/" + post.id}
+                                class="a-block"
+                            >
+                                <div class="post-item-wrapper">
+                                    <div class="post-item post-item-no-divider">
+                                        <div class="post-item-info-wrapper">
+                                            <div class="post-item-title">
+                                                {post.data.title}
+                                            </div>
+                                            <div class="post-item-summary">
+                                                {post.data.description}
+                                            </div>
+                                            <div class="post-item-meta">
+                                                {post.data.pubDate}
+                                            </div>
+                                        </div>
+                                        {post.data.image && (
+                                            <div class="post-item-image-wrapper">
+                                                <div
+                                                    class="post-item-image"
+                                                    style={`background-image: url('` + post.data.image + `');`}
+                                                />
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </a>
+                        ))
+                    }
+                    <Pagination page={page} />
+                </div>
+                <SingleColumnFooter />
+            </div>
+            <BodyIncludes />
+        </div>
+    </body>
+</BaseLayout>

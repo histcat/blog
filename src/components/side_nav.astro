@@ -1,0 +1,43 @@
+---
+
+import { BASIC_INFO } from "../consts";
+
+function is_home() {
+    return Astro.url.pathname === '/';
+}
+
+function is_current(url)
+{
+    return Astro.url.pathname === url;
+}
+
+---
+
+<div ref="sideContainer" class="side-container">
+    <a class={"a-block nav-head " + (is_home() ? 'active' : '')} href={BASIC_INFO.SITE_URL}>
+        <div class="nav-title">
+            {BASIC_INFO.SITE_TITLE}
+        </div>
+        <div class="nav-subtitle">
+            {BASIC_INFO.SITE_DESC}
+        </div>
+    </a>
+
+    <div class="nav-link-list">
+
+        <a class={"a-block no-tint nav-link-item " + (is_current('archieves') ? 'active' : '')} href={BASIC_INFO.SITE_URL + 'archives'}>
+            归档
+        </a>
+
+        <!-- 还应该有点东西 -->
+
+        <a class="a-block no-tint nav-link-item" href={BASIC_INFO.SITE_URL + "/rss.xml"}>
+            RSS
+        </a>
+    </div>
+
+    <div class="nav-footer">
+        Proudly published with Hexo<br>
+        Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+    </div>
+</div>

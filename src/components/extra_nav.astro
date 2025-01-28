@@ -1,0 +1,41 @@
+---
+import { Icon } from 'astro-icon/components'
+const {page} = Astro.props;
+// console.log(page);
+---
+
+
+<div ref="extraContainer" class="extra-container">
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon" >
+                <Icon name="ic:outline-keyboard-arrow-up" />
+            </i>
+        </a>
+
+        {page != undefined && (<div class="pagination-indicator">
+            <span style="text-align: center">
+                {page.currentPage}<br><div style="display: inline-block; transform: rotate(-28deg)">-</div><br>{page.lastPage}
+            </span>
+        </div>)}
+
+        {page != undefined && page.url.prev != undefined && (<a class="pagination-action" href={page.url.prev}>
+            <i class="material-icons pagination-action-icon">
+                <Icon name="ic:outline-keyboard-arrow-left" />
+            </i>
+        </a>)}
+
+       {page != undefined && page.url.next != undefined && (<a class="pagination-action" href={page.url.next}>
+            <i class="material-icons pagination-action-icon">
+                <Icon name="ic:outline-keyboard-arrow-right" />
+            </i>
+        </a>)}
+        
+    </div>
+</div>
+
+<style>
+    [data-icon] {
+    font-size: 24px !important;
+}
+</style>

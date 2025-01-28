@@ -1,0 +1,27 @@
+---
+import "../styles/global.css";
+
+import { BASIC_INFO } from "../consts.ts";
+import HeadMeta from "../components/head_meta.astro";
+import HeadIncludes from "../components/head_includes.astro";
+const basic_info = BASIC_INFO;
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang={basic_info.SITE_LANG}>
+    <head>
+        <HeadMeta title={title} />
+        <meta charset="utf-8" />
+        <meta name="X-UA-Compatible" content="IE=edge" />
+        <meta
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+            name="viewport"
+        />
+        <meta content="telephone=no" name="format-detection" />
+        <meta name="renderer" content="webkit" />
+        <meta name="theme-color" content="#ffffff" />
+        <HeadIncludes />
+    </head>
+    <slot />
+</html>

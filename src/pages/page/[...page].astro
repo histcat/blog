@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import { SETTINGS, BASIC_INFO } from '../../consts.ts';
+import PostList from "../../layouts/PostList.astro";
+export const getStaticPaths = (async ({ paginate }) => {
+    const posts = await getCollection("posts", ({ data } : any) => !data.draft);
+    const sortedPosts = posts.sort((a : any, b : any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    return paginate( sortedPosts, { pageSize: SETTINGS.POST_PER_PAGE });
+}) satisfies GetStaticPaths;
+
+const {page} = Astro.props;
+
+---
+
+<PostList title={BASIC_INFO.SITE_NAME}, page = {page} /> 

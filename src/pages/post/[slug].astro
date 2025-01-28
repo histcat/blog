@@ -1,0 +1,24 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import PostDetails from "../../layouts/PostDetails.astro";
+
+export interface Props {
+    post: CollectionEntry<"posts">;
+}
+
+export async function getStaticPaths() {
+    const posts = await getCollection("posts", ({ data } : any) => !data.draft);
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: { post },
+    }));
+}
+
+const {post} = Astro.props;
+const posts = await getCollection("posts", ({ data } : any) => !data.draft);
+const sortedPosts = posts.sort((a : any, b : any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+
+<PostDetails post={post} posts={sortedPosts}/>
+<!-- post是该文章，而sortedposts是包含所有文章的数组 -->

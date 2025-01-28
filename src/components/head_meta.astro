@@ -1,0 +1,18 @@
+---
+import { BASIC_INFO } from "../consts.ts";
+const basic_info = BASIC_INFO;
+const {title} = Astro.props;
+---
+
+<title>{title}</title>
+<meta charset="utf-8" />
+<meta name="X-UA-Compatible" content="IE=edge" />
+<meta name="author" content={basic_info.SITE_AUTHOR} />
+<meta name="description" content={basic_info.SITE_DESC} />
+<meta name="keywords" content={basic_info.SITE_KEYWORDS} />
+<link
+    rel="alternate"
+    type="application/atom+xml"
+    title="ATOM 1.0"
+    href={basic_info.SITE_URL + "/rss.xml"}
+/>

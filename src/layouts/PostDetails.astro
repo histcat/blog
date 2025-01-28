@@ -1,0 +1,83 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import SingleColumn from "../components/single_column.astro";
+import SideNav from "../components/side_nav.astro";
+import BodyIncludes from "../components/body_includes.astro";
+import ExtraNav from "../components/extra_nav.astro";
+import SingleColumnFooter from "../components/single_column_footer.astro";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import { BASIC_INFO } from "../consts";
+export interface Props {
+  post: CollectionEntry<"posts">;
+  posts: CollectionEntry<"posts">[];
+}
+
+const { post, posts } = Astro.props;
+// console.log(post, posts);
+const { Content } = await render(post);
+
+function getFeaturedImage() {
+    var featuredImage = post.data.image;
+    if (!featuredImage) return '';
+    if (featuredImage.startsWith("http://") || featuredImage.startsWith("https://")) return featuredImage;
+    return BASIC_INFO + featuredImage;
+}
+
+---
+
+
+<BaseLayout title={ post.data.title + " - " + BASIC_INFO.SITE_NAME }>
+    <body>
+        <div id="top"></div>
+        <div id="app">
+            <SingleColumn />
+            <SideNav />
+            <ExtraNav />
+            <div ref="streamContainer" class="stream-container">
+                <div class="post-list-container post-list-container-shadow">
+                    <div class="post">
+                        <div class={post.data.image ? "post-head-wrapper" : "post-head-wrapper-text-only"} style={`background-image: url('` + getFeaturedImage() + `');`}>
+                            <div class="post-title">
+                                {post.data.title}
+                                <div class="post-meta">
+                                    <time datetime={post.data.pubDate} itemprop="datePublished">
+                                        {post.data.pubDate}
+                                    </time>&nbsp;
+                                    <!-- <% if (page.categories && page.categories.length){ %>
+                                    <% count = page.categories.length %>
+                                    <i class="material-icons" style="">folder</i>
+                                    <% page.categories.forEach(function(category, index) { %>
+                                    <a href='<%= config.root + category.path %>'><%= category.name %></a><%= (count !== index + 1) ? ', ' : '' %>
+                                    <% }); %>
+                                    <% } %> -->
+                
+                                    <!-- <% if (page.tags && page.tags.length){ %>
+                                    <% count = page.tags.length %>
+                                    <i class="material-icons" style="">label</i>
+                                    <% page.tags.forEach(function(tag, index) { %>
+                                    <a href='<%= config.root + tag.path %>'><%= tag.name %></a><%= (count !== index + 1) ? ', ' : '' %>
+                                    <% }); %>
+                                    <% } %> -->
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="post-body-wrapper">
+                            <div class="post-body">
+                                <Content />
+                            </div>
+                        </div>
+                
+                        <!-- <% include _include/post_pagination.ejs %> -->
+                
+                        <!-- <% include _include/comment_templates.ejs %> -->
+                    </div>
+                </div>
+
+                <SingleColumnFooter />
+            </div>
+            <BodyIncludes />
+        </div>
+    </body>
+</BaseLayout>
