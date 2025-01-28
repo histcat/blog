@@ -7,6 +7,7 @@ import BodyIncludes from "../components/body_includes.astro";
 import ExtraNav from "../components/extra_nav.astro";
 import SingleColumnFooter from "../components/single_column_footer.astro";
 import Pagination from "../components/pagination.astro";
+import { formatDate } from "../utils/FormatDate";
 const { page, title } = Astro.props;
 ---
 
@@ -37,7 +38,7 @@ const { page, title } = Astro.props;
                                                 {post.data.description}
                                             </div>
                                             <div class="post-item-meta">
-                                                {post.data.pubDate}
+                                                {formatDate(post.data.pubDate)}
                                             </div>
                                         </div>
                                         {post.data.image && (

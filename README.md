@@ -24,3 +24,11 @@ pnpm run build
 
 ## public
 js文件
+
+# TODO LIST
+## 按优先级排序
+~~1. 归档页面~~
+2. PostDetails 文件中的post_pagination组件
+3. 分类页面
+4. tag页面
+5. 评论组件

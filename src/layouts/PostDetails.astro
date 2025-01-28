@@ -6,6 +6,7 @@ import BodyIncludes from "../components/body_includes.astro";
 import ExtraNav from "../components/extra_nav.astro";
 import SingleColumnFooter from "../components/single_column_footer.astro";
 import type { CollectionEntry } from "astro:content";
+import { formatDate } from "../utils/FormatDate.ts"; 
 import { render } from "astro:content";
 import { BASIC_INFO } from "../consts";
 export interface Props {
@@ -42,7 +43,7 @@ function getFeaturedImage() {
                                 {post.data.title}
                                 <div class="post-meta">
                                     <time datetime={post.data.pubDate} itemprop="datePublished">
-                                        {post.data.pubDate}
+                                        {formatDate(post.data.pubDate)}
                                     </time>&nbsp;
                                     <!-- <% if (page.categories && page.categories.length){ %>
                                     <% count = page.categories.length %>
