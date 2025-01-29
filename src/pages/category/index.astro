@@ -1,0 +1,12 @@
+---
+import { getCollection } from "astro:content";
+import CategoryIndex from "../../layouts/CategoryIndex.astro";
+import { BASIC_INFO } from "../../consts";
+
+const posts = await getCollection("posts", ({ data } : any) => !data.draft);
+const sortedPosts = posts.sort((a : any, b : any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const categories = [...new Set(sortedPosts.flatMap(post => post.data.category))].sort();
+
+---
+
+<CategoryIndex title={"分类 - " + BASIC_INFO.SITE_NAME}, categories={categories}/>

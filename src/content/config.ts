@@ -12,7 +12,8 @@ const posts = defineCollection({
         updated: z.coerce.date().optional(),
         image: z.string().optional(),
         badge: z.string().optional(),
-        categories: z
+        draft: z.boolean().optional(),
+        category: z
           .array(z.string())
           .refine((items) => new Set(items).size === items.length, {
             message: "categories must be unique",

@@ -4,7 +4,7 @@
 /* new font-family for general font*/
 @font-face {
     font-family:NeoXiHei;
-    src:url("/themes/hexo-theme-Journal/source/font/LXGWNeoXiHei.ttf")；
+    src:url("/font/LXGWNeoXiHei.ttf");
 }
 
 /* new font-family for general pre*/

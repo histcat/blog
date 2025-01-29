@@ -9,13 +9,14 @@ import type { CollectionEntry } from "astro:content";
 import { formatDate } from "../utils/FormatDate.ts"; 
 import { render } from "astro:content";
 import { BASIC_INFO } from "../consts";
+import PostPagination from "../components/post_pagination.astro";
 export interface Props {
   post: CollectionEntry<"posts">;
   posts: CollectionEntry<"posts">[];
 }
 
 const { post, posts } = Astro.props;
-// console.log(post, posts);
+
 const { Content } = await render(post);
 
 function getFeaturedImage() {
@@ -24,6 +25,15 @@ function getFeaturedImage() {
     if (featuredImage.startsWith("http://") || featuredImage.startsWith("https://")) return featuredImage;
     return BASIC_INFO + featuredImage;
 }
+
+const allPosts = posts.map(({ data: { title }, id }) => ({
+  id,
+  title,
+}));
+
+const currentPostIndex = posts.findIndex((p) => p.id === post.id);
+const prevPost = currentPostIndex !== 0 ? allPosts[currentPostIndex - 1] : null;
+const nextPost = currentPostIndex !== allPosts.length ? allPosts[currentPostIndex + 1] : null;
 
 ---
 
@@ -70,7 +80,7 @@ function getFeaturedImage() {
                             </div>
                         </div>
                 
-                        <!-- <% include _include/post_pagination.ejs %> -->
+                        <PostPagination prev = {prevPost} next = {nextPost}}/>
                 
                         <!-- <% include _include/comment_templates.ejs %> -->
                     </div>

@@ -28,7 +28,10 @@ js文件
 # TODO LIST
 ## 按优先级排序
 ~~1. 归档页面~~
-2. PostDetails 文件中的post_pagination组件
+1. 把首页和page1页面弄成一样的
+~~2. PostDetails 文件中的post_pagination组件~~
 3. 分类页面
 4. tag页面
-5. 评论组件
+5. 字体
+6. 评论组件
+7. i18n

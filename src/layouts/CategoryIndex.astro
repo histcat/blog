@@ -1,0 +1,63 @@
+---
+import { BASIC_INFO } from "../consts";
+import BaseLayout from "./BaseLayout.astro";
+import SingleColumn from "../components/single_column.astro";
+import SideNav from "../components/side_nav.astro";
+import BodyIncludes from "../components/body_includes.astro";
+import ExtraNav from "../components/extra_nav.astro";
+import SingleColumnFooter from "../components/single_column_footer.astro";
+import Pagination from "../components/pagination.astro";
+import { formatDate } from "../utils/FormatDate.ts";
+
+const { title, categories } = Astro.props;
+console.log(categories);
+---
+
+<BaseLayout title={title}>
+    <body>
+        <div id="top"></div>
+        <div id="app">
+            <SingleColumn />
+            <SideNav />
+            <ExtraNav />
+
+            <div ref="streamContainer" class="stream-container">
+                <div class="post-list-container post-list-container-shadow">
+                    
+                    <a class="a-block">
+                        <div class="post-item-wrapper post-item-wrapper-no-hover">
+                            <div class="post-item post-item-no-gaps">
+                                <div class="post-item-info-wrapper">
+                                    <div class="post-item-title post-item-title-small">
+                                        分类
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    
+                    {categories.map((item : string) => (
+                        <a href={BASIC_INFO.SITE_URL + "category/" + item} class="a-block">
+                            <div class="post-item-wrapper">
+                                <div class="post-item post-item-no-gaps">
+                                    <div class="post-item-info-wrapper">
+                                        <div class="post-item-title">
+                                            {item}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    ))}
+
+                    
+                    
+                    
+                </div>
+                <SingleColumnFooter />
+            </div>
+            <BodyIncludes />
+        </div>
+    </body>
+</BaseLayout>
