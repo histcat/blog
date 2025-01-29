@@ -1,0 +1,58 @@
+---
+import { BASIC_INFO } from "../consts";
+import BaseLayout from "./BaseLayout.astro";
+import SingleColumn from "../components/single_column.astro";
+import SideNav from "../components/side_nav.astro";
+import BodyIncludes from "../components/body_includes.astro";
+import ExtraNav from "../components/extra_nav.astro";
+import SingleColumnFooter from "../components/single_column_footer.astro";
+import Pagination from "../components/pagination.astro";
+import { formatDate } from "../utils/FormatDate.ts";
+
+const {page, title, pagecate} = Astro.props;
+
+---
+
+<BaseLayout title={title}>
+    <body>
+        <div id="top"></div>
+        <div id="app">
+            <SingleColumn />
+            <SideNav />
+            <ExtraNav page={page} />
+
+            <div ref="streamContainer" class="stream-container">
+                <div class="post-list-container post-list-container-shadow">
+                    <div class="post-item-wrapper post-item-wrapper-no-hover">
+                        <div class="post-item post-item-no-gaps">
+                            <div class="post-item-info-wrapper">
+                                <div class="post-item-title  post-item-title-small">
+                                    <a href={BASIC_INFO.SITE_URL + 'category/'}>分类</a> / {pagecate}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {page.data.map((post : any) => (
+                        <a href={BASIC_INFO.SITE_URL + 'post/' + post.id} class="a-block">
+                            <div class="post-item-wrapper">
+                                <div class="post-item post-item-no-gaps">
+                                    <div class="post-item-info-wrapper">
+                                        <div class="post-item-title">
+                                            {post.data.title}
+                                        </div>
+                                        <div class="post-item-meta">
+                                            {formatDate(post.data.pubDate)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+                <Pagination page={page} />
+                <SingleColumnFooter />
+            </div>
+            <BodyIncludes />
+        </div>
+    </body>
+</BaseLayout>
