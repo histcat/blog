@@ -52,8 +52,8 @@ const nextPost = currentPostIndex !== allPosts.length ? allPosts[currentPostInde
                             <div class="post-title">
                                 {post.data.title}
                                 <div class="post-meta">
-                                    <time datetime={post.data.pubDate} itemprop="datePublished">
-                                        {formatDate(post.data.pubDate)}
+                                    <time datetime={post.data.date} itemprop="datePublished">
+                                        {formatDate(post.data.date)}
                                     </time>&nbsp;
                                     <!-- <% if (page.categories && page.categories.length){ %>
                                     <% count = page.categories.length %>

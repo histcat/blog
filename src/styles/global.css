@@ -356,7 +356,8 @@ a {
       width: 64px;
       padding: 15px 0;
       font-size: 12px;
-      /*font-family: "Fira Mono", "Cousine", Monaco, Menlo, "Source Code Pro", monospace;*/ }
+      /* font-family: "Fira Mono", "Cousine", Monaco, Menlo, "Source Code Pro", monospace;  */
+    }
     .extra-container .pagination .pagination-action {
       display: flex;
       flex-direction: column;
@@ -664,10 +665,12 @@ a {
       display: flex;
       justify-content: space-between; }
       .stream-container .post .post-pagination .newer-posts {
+        text-decoration: none;
         padding-right: 5px;
         text-align: left;
         width: 50%; }
       .stream-container .post .post-pagination .older-posts {
+        text-decoration: none;
         padding-left: 5px;
         text-align: right;
         width: 50%; }
@@ -700,7 +703,8 @@ a {
           width: 64px;
           padding: 15px 0;
           font-size: 12px;
-          font-family: "Fira Mono", "Cousine", Monaco, Menlo, "Source Code Pro", monospace; }
+          /* font-family: "Fira Mono", "Cousine", Monaco, Menlo, "Source Code Pro", monospace;  */
+        }
         .stream-container .pagination .pagination-action {
           display: flex;
           flex-direction: column;

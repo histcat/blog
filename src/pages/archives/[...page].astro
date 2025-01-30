@@ -6,7 +6,7 @@ import Archives from "../../layouts/Archives.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
     const posts = await getCollection("posts", ({ data } : any) => !data.draft);
-    const sortedPosts = posts.sort((a : any, b : any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    const sortedPosts = posts.sort((a : any, b : any) => b.data.date.valueOf() - a.data.date.valueOf());
     return paginate( sortedPosts, { pageSize: SETTINGS.POST_PER_PAGE });
 }) satisfies GetStaticPaths;
 
@@ -15,7 +15,7 @@ const {page} = Astro.props;
 
 
 const groupedByYear = itemlist.reduce((acc: any, item: any) => {
-    const year = new Date(item.data.pubDate).getFullYear();
+    const year = new Date(item.data.date).getFullYear();
     if (!acc[year]) {
         acc[year] = [];
     }

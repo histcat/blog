@@ -5,7 +5,7 @@ import { SETTINGS, BASIC_INFO } from '../consts.ts';
 import PostList from "../layouts/PostList.astro";
 import { undefined } from "astro:schema";
 const posts = await getCollection("posts", ({ data } : any) => !data.draft);
-const sortedPosts = posts.sort((a : any, b : any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const sortedPosts = posts.sort((a : any, b : any) => b.data.date.valueOf() - a.data.date.valueOf());
 var PaginationExistence;
 const firstEightPosts = sortedPosts.slice(0, SETTINGS.POST_PER_PAGE);
 PaginationExistence = sortedPosts.length >= 8;

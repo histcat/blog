@@ -36,7 +36,9 @@ function is_current(url : any)
         <a class={"a-block no-tint nav-link-item " + (is_current('archives') ? 'active' : '')} href={BASIC_INFO.SITE_URL + 'archives'}>
             归档
         </a>
-
+        <a class={"a-block no-tint nav-link-item " + (is_current('category') ? 'active' : '')} href={BASIC_INFO.SITE_URL + 'category'}>
+            分类
+        </a>
         <!-- 还应该有点东西 -->
 
         <a class="a-block no-tint nav-link-item" href={BASIC_INFO.SITE_URL + "/rss.xml"}>

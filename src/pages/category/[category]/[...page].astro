@@ -7,7 +7,7 @@ import Category from "../../../layouts/Category.astro";
 export const getStaticPaths = (async ({ paginate }) => {
     const all_posts = await getCollection("posts", ({ data }) => !data.draft);
     const all_categories = [...new Set(all_posts.flatMap((post: any) => post.data.category || []))].sort();
-    all_posts.sort((a : any, b : any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    all_posts.sort((a : any, b : any) => b.data.date.valueOf() - a.data.date.valueOf());
     return all_categories.flatMap((category) => {
         const filtered_posts = all_posts.filter((post) => post.data.category?.includes(category))
         return paginate(filtered_posts, {
