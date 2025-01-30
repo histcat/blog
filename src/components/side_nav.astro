@@ -6,15 +6,23 @@ function is_home() {
     return Astro.url.pathname === '/';
 }
 
-function is_current(url)
+function getFirstParam(url : any)
 {
-    return Astro.url.pathname === url;
+    const parts = url.split('/');
+    return parts.length > 2 ? parts[1] : parts.join('');
 }
+
+function is_current(url : any)
+{
+    return getFirstParam(Astro.url.pathname) === url;
+}
+
+
 
 ---
 
 <div ref="sideContainer" class="side-container">
-    <a class={"a-block nav-head " + (is_home() ? 'active' : '')} href={BASIC_INFO.SITE_URL}>
+    <a class={"a-block nav-head " + ((is_home() || is_current('page')) ? 'active' : '')} href={BASIC_INFO.SITE_URL}>
         <div class="nav-title">
             {BASIC_INFO.SITE_TITLE}
         </div>
@@ -25,7 +33,7 @@ function is_current(url)
 
     <div class="nav-link-list">
 
-        <a class={"a-block no-tint nav-link-item " + (is_current('archieves') ? 'active' : '')} href={BASIC_INFO.SITE_URL + 'archives'}>
+        <a class={"a-block no-tint nav-link-item " + (is_current('archives') ? 'active' : '')} href={BASIC_INFO.SITE_URL + 'archives'}>
             归档
         </a>
 

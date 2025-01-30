@@ -1,40 +1,24 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import { SETTINGS, BASIC_INFO } from '../consts.ts';
+import PostList from "../layouts/PostList.astro";
+import { undefined } from "astro:schema";
+const posts = await getCollection("posts", ({ data } : any) => !data.draft);
+const sortedPosts = posts.sort((a : any, b : any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+var PaginationExistence;
+const firstEightPosts = sortedPosts.slice(0, SETTINGS.POST_PER_PAGE);
+PaginationExistence = sortedPosts.length >= 8;
 
+const page = {
+    data: firstEightPosts,
+    currentPage: 1,
+    lastPage: Math.ceil(sortedPosts.length / SETTINGS.POST_PER_PAGE),
+    url: {
+        current: '/page',
+        next: PaginationExistence ? '/page/2' : undefined,
+    }
+}
 ---
 
-<BaseLayout title={BASIC_INFO.SITE_NAME}>
-    <div class="post-list-container post-list-container-no-background">
-        <!-- <% page.posts.each(function (item) { %> -->
-        <a href="<%= config.root + item.path %>" class="a-block">
-            <div class="post-item-wrapper">
-                <div class="post-item post-item-no-divider">
-                    <div class="post-item-info-wrapper">
-                        <div class="post-item-title">
-                            <!-- <%= item.title %> -->
-                        </div>
-                        <div class="post-item-summary">
-                            <!-- <%= item.intro && item.intro.length > 0 ? item.intro : truncate(strip_html(item.content), {
-                                length: config.truncate_len ? config.truncate_len : theme.truncate_len ? theme.truncate_len : 140,
-                                omission: '...'
-                            }) %> -->
-                        </div>
-                        <div class="post-item-meta">
-                            <!-- <%= date(item.date, "YYYY-MM-DD") %> -->
-                        </div>
-                    </div>
-                    <!-- <% if(item.featured_image){ %> -->
-                    <div class="post-item-image-wrapper">
-                        <div class="post-item-image"></div>
-                    </div>
-                    <!-- <% } %> -->
-                </div>
-            </div>
-        </a>
-        <!-- <% }) %> -->
-
-        <!-- <% include _include/pagination.ejs %> -->
-    </div>
-</BaseLayout>
+<PostList title={BASIC_INFO.SITE_NAME} page = { page }/> 

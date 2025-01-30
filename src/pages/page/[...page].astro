@@ -11,6 +11,8 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const {page} = Astro.props;
 
+// console.log(page);
+
 ---
 
 <PostList title={BASIC_INFO.SITE_NAME}, page = {page} /> 
