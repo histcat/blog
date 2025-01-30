@@ -24,18 +24,18 @@ function is_current(url : any)
      v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
     <div class="drawer-content">
         <div class="drawer-menu">
-            <a class={"a-block drawer-menu-item" + ((is_home() || is_current('page')) ? ' active' : '')} href={BASIC_INFO.SITE_URL}>
+            <a class={"a-block drawer-menu-item" + ((is_home() || is_current('page')) ? ' active' : '')} href={"/"}>
                 首页
             </a>
 
-            <a class={"a-block drawer-menu-item" + (is_current('archives') ? ' active' : '')} href={BASIC_INFO.SITE_URL + "archives"}>
+            <a class={"a-block drawer-menu-item" + (is_current('archives') ? ' active' : '')} href={"/" + "archives"}>
                 归档
             </a>
-            <a class={"a-block drawer-menu-item" + (is_current('category') ? ' active' : '')} href={BASIC_INFO.SITE_URL + "category"}>
+            <a class={"a-block drawer-menu-item" + (is_current('category') ? ' active' : '')} href={"/" + "category"}>
                 分类
             </a>
             <!-- 还缺点东西 -->
-            <a class="a-block drawer-menu-item" href={BASIC_INFO.SITE_URL + "rss.xml"}>
+            <a class="a-block drawer-menu-item" href={"/" + "rss.xml"}>
                 RSS
             </a>
         </div>
@@ -52,14 +52,14 @@ function is_current(url : any)
                 <Icon name="ic:round-menu" />
             </i>
         </button>
-        <a ref="navTitle" class="navbar-brand" href={BASIC_INFO.SITE_URL}>
+        <a ref="navTitle" class="navbar-brand" href={"/"}>
             {BASIC_INFO.SITE_TITLE}
         </a>
     </div>
 </nav>
 <div class="single-column-header-container" ref="pageHead"
      v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
-    <a href={BASIC_INFO.SITE_URL} style="text-decoration: none">
+    <a href={"/"} style="text-decoration: none">
         <div class="single-column-header-title">{BASIC_INFO.SITE_TITLE}</div>
         <div class="single-column-header-subtitle">{BASIC_INFO.SITE_DESC}</div>
     </a>

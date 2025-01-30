@@ -22,7 +22,7 @@ function is_current(url : any)
 ---
 
 <div ref="sideContainer" class="side-container">
-    <a class={"a-block nav-head " + ((is_home() || is_current('page')) ? 'active' : '')} href={BASIC_INFO.SITE_URL}>
+    <a class={"a-block nav-head " + ((is_home() || is_current('page')) ? 'active' : '')} href={"/"}>
         <div class="nav-title">
             {BASIC_INFO.SITE_TITLE}
         </div>
@@ -33,15 +33,15 @@ function is_current(url : any)
 
     <div class="nav-link-list">
 
-        <a class={"a-block no-tint nav-link-item " + (is_current('archives') ? 'active' : '')} href={BASIC_INFO.SITE_URL + 'archives'}>
+        <a class={"a-block no-tint nav-link-item " + (is_current('archives') ? 'active' : '')} href={"/" + 'archives'}>
             归档
         </a>
-        <a class={"a-block no-tint nav-link-item " + (is_current('category') ? 'active' : '')} href={BASIC_INFO.SITE_URL + 'category'}>
+        <a class={"a-block no-tint nav-link-item " + (is_current('category') ? 'active' : '')} href={"/" + 'category'}>
             分类
         </a>
         <!-- 还应该有点东西 -->
 
-        <a class="a-block no-tint nav-link-item" href={BASIC_INFO.SITE_URL + "/rss.xml"}>
+        <a class="a-block no-tint nav-link-item" href={"/" + "rss.xml"}>
             RSS
         </a>
     </div>

@@ -37,7 +37,7 @@ const { title, categories } = Astro.props;
                     
                     
                     {categories.map((item : string) => (
-                        <a href={BASIC_INFO.SITE_URL + "category/" + item} class="a-block">
+                        <a href={"/" + "category/" + item} class="a-block">
                             <div class="post-item-wrapper">
                                 <div class="post-item post-item-no-gaps">
                                     <div class="post-item-info-wrapper">

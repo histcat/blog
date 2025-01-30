@@ -8,7 +8,7 @@ const {prev, next} = Astro.props;
 
     {
         prev != null && (
-            <a class="newer-posts" href={BASIC_INFO.SITE_URL + "post/" + prev.id}>
+            <a class="newer-posts" href={"/" + "post/" + prev.id}>
                 上一篇<br>{prev.title}
             </a>
         )
@@ -18,7 +18,7 @@ const {prev, next} = Astro.props;
 
     {
         next != null && (
-            <a class="older-posts" href={BASIC_INFO.SITE_URL + "post/" + next.id}>
+            <a class="older-posts" href={"/" + "post/" + next.id}>
                 下一篇<br>{next.title}
             </a>
         )
