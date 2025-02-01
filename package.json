@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.11",
     "@astrojs/vue": "^5.0.6",
     "@iconify-json/mdi": "^1.2.3",
     "astro": "^5.2.3",

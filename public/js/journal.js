@@ -72,4 +72,12 @@ Vue.createApp({
     },
 }).mount('#app')
 
-new SmoothScroll('a#globalBackToTop');
+document.querySelectorAll('a.globalBackToTop').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
