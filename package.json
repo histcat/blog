@@ -11,8 +11,11 @@
   "dependencies": {
     "@astrojs/vue": "^5.0.6",
     "@iconify-json/mdi": "^1.2.3",
-    "astro": "^5.1.9",
+    "astro": "^5.2.3",
     "astro-icon": "^1.1.5",
+    "katex": "^0.16.21",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
     "vue": "^3.5.13"
   },
   "devDependencies": {

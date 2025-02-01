@@ -7,5 +7,9 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue(), icon()]
+  integrations: [vue(), icon()],
+  markdown: {
+    remarkPlugins: ["remark-math"],
+    rehypePlugins: ["rehype-katex"]
+  }
 });

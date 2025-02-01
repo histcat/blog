@@ -5,10 +5,10 @@ export const BASIC_INFO = {
     SITE_DESC: '一个高中生的小窝',
     SITE_KEYWORDS: 'oi, diary, 日记, blog, 博客',
     SITE_AUTHOR: 'Histcat',
-    SITE_URL: 'http://localhost:4321/',// don't forget the last slash
+    SITE_URL: 'http://blog.histcat.top/',// don't forget the last slash
 }
 export const ASSETS_INFO = {
-    FAVICON: '/favicon.ico',
+    FAVICON: 'https://js.histcat.top/gh/JesseJeson/picture-api@master/20220812/ico.2ayx6svgfi3o.png',
 }
 
 export const SETTINGS = {

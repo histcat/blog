@@ -2,10 +2,10 @@
   display: none; }
 
 /* new font-family for general font*/
-@font-face {
+/* @font-face {
     font-family:NeoXiHei;
     src:url("/font/LXGWNeoXiHei.ttf");
-}
+} */
 
 /* new font-family for general pre*/
 
@@ -18,7 +18,7 @@ body {
   padding: 0;
   margin: 0;
   /* font-family: "Lora", "source-han-serif-tc", serif; */
-  font-family: "NeoXiHei";
+  /* font-family: "NeoXiHei"; */
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
