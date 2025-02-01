@@ -1,28 +1,26 @@
 ---
-
 import { BASIC_INFO } from "../consts";
 
 function is_home() {
-    return Astro.url.pathname === '/';
+    return Astro.url.pathname === "/";
 }
 
-function getFirstParam(url : any)
-{
-    const parts = url.split('/');
-    return parts.length > 2 ? parts[1] : parts.join('');
+function getFirstParam(url: any) {
+    const parts = url.split("/");
+    return parts.length > 2 ? parts[1] : parts.join("");
 }
 
-function is_current(url : any)
-{
+function is_current(url: any) {
     return getFirstParam(Astro.url.pathname) === url;
 }
-
-
-
 ---
 
 <div ref="sideContainer" class="side-container">
-    <a class={"a-block nav-head " + ((is_home() || is_current('page')) ? 'active' : '')} href={"/"}>
+    <a
+        class={"a-block nav-head " +
+            (is_home() || is_current("page") ? "active" : "")}
+        href={"/"}
+    >
         <div class="nav-title">
             {BASIC_INFO.SITE_TITLE}
         </div>
@@ -32,11 +30,18 @@ function is_current(url : any)
     </a>
 
     <div class="nav-link-list">
-
-        <a class={"a-block no-tint nav-link-item " + (is_current('archives') ? 'active' : '')} href={"/" + 'archives'}>
+        <a
+            class={"a-block no-tint nav-link-item " +
+                (is_current("archives") ? "active" : "")}
+            href={"/" + "archives"}
+        >
             归档
         </a>
-        <a class={"a-block no-tint nav-link-item " + (is_current('category') ? 'active' : '')} href={"/" + 'category'}>
+        <a
+            class={"a-block no-tint nav-link-item " +
+                (is_current("category") ? "active" : "")}
+            href={"/" + "category"}
+        >
             分类
         </a>
         <!-- 还应该有点东西 -->
@@ -44,10 +49,25 @@ function is_current(url : any)
         <a class="a-block no-tint nav-link-item" href={"/" + "rss.xml"}>
             RSS
         </a>
+
+        <a
+            class="a-block no-tint nav-link-item"
+            href="https://www.travellings.cn/go.html"
+            target="_blank"
+            rel="noopener"
+        >
+            开往
+        </a>
     </div>
 
     <div class="nav-footer">
-        Proudly published with Hexo<br>
-        Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+        Proudly published with Astro<br />
+        Theme Journal by Histcat<br />
+        Adapted from <a
+            href="https://github.com/SumiMakito/hexo-theme-journal/"
+            target="_blank"
+            rel="noreferrer noopener"
+            >Journal.<br />
+        </a>
     </div>
 </div>
