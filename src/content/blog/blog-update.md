@@ -1,6 +1,7 @@
 ---
 abbrlink: ''
-categories:
+categories: []
+category:
 - 博客
 date: '2025-02-01T21:52:03.573+08:00'
 description: 博客大更新！全新的展示，Designed by Histcat for you.
@@ -8,7 +9,7 @@ tags:
 - 博客
 - blog
 title: 博客の更新
-updated: '2025-02-01T21:52:03.573+08:00'
+updated: '2025-02-02T21:42:27.598+08:00'
 ---
 # 博客大更新！
 
