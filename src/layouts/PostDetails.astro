@@ -50,7 +50,7 @@ const nextPost = currentPostIndex !== allPosts.length ? allPosts[currentPostInde
                     <div class="post">
                         <div class={post.data.image ? "post-head-wrapper" : "post-head-wrapper-text-only"} style={`background-image: url('` + getFeaturedImage() + `');`}>
                             <div class="post-title">
-                                {post.data.title}
+                                <div data-pagefind-meta="title" data-pagefind-body>{post.data.title}</div>
                                 <div class="post-meta">
                                     <time datetime={post.data.date} itemprop="datePublished">
                                         {formatDate(post.data.date)}
@@ -75,7 +75,7 @@ const nextPost = currentPostIndex !== allPosts.length ? allPosts[currentPostInde
                         </div>
                 
                         <div class="post-body-wrapper">
-                            <div class="post-body">
+                            <div class="post-body" data-pagefind-body>
                                 <Content />
                             </div>
                         </div>
