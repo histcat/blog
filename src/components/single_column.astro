@@ -8,7 +8,7 @@ function is_home() {
 function getFirstParam(url : any)
 {
     const parts = url.split('/');
-    return parts.length > 2 ? parts[1] : parts.join('');
+    return parts.length >= 2 ? parts[1] : parts.join('');
 }
 
 function is_current(url : any)
